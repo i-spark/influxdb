@@ -13,7 +13,7 @@
 
 # SUBDIRS are directories that have their own Makefile.
 # It is required that all SUBDIRS have the `all` and `clean` targets.
-SUBDIRS := http ui chronograf query storage
+SUBDIRS := http ui chronograf storage
 
 export GOOS=$(shell go env GOOS)
 export GOARCH=$(shell go env GOARCH)
@@ -149,9 +149,6 @@ test-js: node_modules
 # Download tsdb testdata before running unit tests
 test-go:
 	$(GO_TEST) ./...
-
-test-promql-e2e:
-	cd query/promql/internal/promqltests; go test ./...
 
 test-integration: GO_TAGS=integration
 test-integration:
